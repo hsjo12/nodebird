@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .timeline
+    .followings.half
+      h2 팔로잉 목록
+      if user.Followings
+        for following in user.Followings
+          div= following.nick
+    .followers.half
+      h2 팔로워 목록
+      if user.Followers
+        for follower in user.Followers
+          div= follower.nick
+    
+    //프로필 수정 닉네임
+    //     input(name='nick')  req.body.nick 에 저장된다.
+    form#profile-form(method='post',action='/user/profile')
+      input(name='nick') 
+      button 닉네임 수정
